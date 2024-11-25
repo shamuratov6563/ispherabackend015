@@ -65,8 +65,22 @@ class Category(models.Model):
 # SHOP qismi
 
 
+class Product(models.Model):
+    name = models.CharField(max_length=75)
+    description = models.TextField()
+    is_avalible = models.BooleanField()
+    delivery = models.CharField(max_length=255)
+    pickup = models.CharField(max_length=125)
+    pickup = models.CharField(max_length=65)
+    service_duration = models.CharField(max_length=65)
+    made_in = models.CharField(max_length=65)
+    guarantee = models.CharField(max_length=65)
 
 
+
+class ProductImage(models.Model):
+    image = models.ImageField(upload_to='product_image/')
+    product = models.ForeignKey(Product)
 
 
 
