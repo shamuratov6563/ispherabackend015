@@ -83,6 +83,33 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product)
 
 
+class ProductInfo(models.Model):
+    name = models.CharField(max_length=250)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+
+
+
+class ProductInfoType(models.Model):
+    key = models.CharField(max_length=250)
+    key = models.CharField(max_length=250)
+    product_info = models.ForeignKey(ProductInfo, on_delete=models.PROTECT)
+
+
+class ProductMemory(models.Model):
+    memory = models.CharField(max_length=250)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT) 
+
+
+class ProductColour(models.Model):
+    colour = models.CharField(max_length=250)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT) 
+
+
+
+class ProductPrice(models.Model):    
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    memory= models.ForeignKey(ProductMemory, on_delete=models.PROTECT)
+    price = models.IntegerField()
 
 
 
