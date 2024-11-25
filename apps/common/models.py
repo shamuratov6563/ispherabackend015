@@ -63,7 +63,79 @@ class Category(models.Model):
 
 
 # SHOP qismi
+# 
+# class Sponsor(models.Model):
+#     class choices(models.TextChoices):
+#         NEW = "new", "yangi"
+#         MODERNATION = "modernation", "modernation"
+#         APPROVED = "approved", "approved"
+#         CANCELLED = "cancelled", "cancelled"
+#     class choices2(models.TextChoices):
+#         KARTA_ORQALI = "karta_orqali", "karta_orqali"
+#         NAQD = "naqd", "naqd"
+#     class choices3(models.TextChoices):
+#         PERSONAL = "personal", "personal"
+#         LEGAL = "legal", "legal"
+#     full_name = models.CharField(max_length=32)
+#     phone_number = models.IntegerField()
+#     donation_amout = models.IntegerField()
+#     org_name = models.CharField(max_length=255)
+#     type = models.CharField(max_length=255, choices=choices3)
+#     status = models.CharField(max_length=255, choices=choices, default=choices.NEW)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     payment_type = models.CharField(max_length=200, choices=choices2, null=True)
 
+
+
+
+class PromoCode(models.Model):
+    promo_code = models.CharField(max_length=20)
+    is_active = models.BooleanField()
+    discount = models.DecimalField()
+    
+
+
+
+
+
+
+class Order(models.Model):
+    class choices(models.TextChoices):
+        PHONE_CALL = 'PhoneCall','Call'
+        EMAIL = 'email','gmail'
+        
+    class choices2(models.TextChoices):
+        CASH = 'money', 'cash'
+        CREDIT_CARD = 'credit','card'
+        
+        
+    class choices3(models.Choices):
+        BY_YOURSELF = 'own','yourself'
+        DELIVERY_MOSCOW = 'InMoscow','Moscow'
+        DELIVERY_RUSSIA = 'russia', 'Russia'
+                
+        
+         
+    full_name = models.CharField(max_length=200)
+    phone_number = models.IntegerField()
+    email = models.EmailField()
+    connection_way = models.CharField(max_length=200,choices=choices)
+    comment = models.TextField()
+    payment_type = models.CharField(max_length=200,choices=choices2)
+    delivery = models.CharField(max_length=200,choices=choices3)
+    total_price = models.DecimalField()
+    promocode = models.ForeignKey(PromoCode,on_delete=models.PROTECT)
+    
+    
+    
+
+    
+class OrderItem(models.Model):
+    product_price = models.ForeignKey('PRODUCT_PRICE',on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField()
+    order = models.ForeignKey(Order,on_delete=models.PROTECT)
+        
+    
 
 
 
