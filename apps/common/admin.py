@@ -97,6 +97,12 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ('order__full_name',)
 
 
+class Post2Admin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+    search_fields = ('title', 'description')
+
+admin.site.register(Post2, Post2Admin)
+
 
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(Post, PostAdmin)
@@ -114,35 +120,3 @@ admin.site.register(ProductMemory, ProductMemoryAdmin)
 admin.site.register(ProductColour, ProductColourAdmin)
 admin.site.register(ProductPrice, ProductPriceAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
-
-
-
-
-
-
-
-
-
-admin.site.register(Banner)
-admin.site.register(Post)
-admin.site.register(Service)
-admin.site.register(Discount)
-admin.site.register(Client)
-admin.site.register(Post)
-admin.site.register(Category)
-admin.site.register(PromoCode)
-admin.site.register(Order)
-admin.site.register(Product)
-admin.site.register(ProductImage)
-admin.site.register(ProductInfo)
-admin.site.register(ProductInfoType)
-admin.site.register(ProductMemory)
-admin.site.register(ProductColour)
-admin.site.register(ProductPrice)
-admin.site.register(OrderItem)
-
-
-
-
-
-
