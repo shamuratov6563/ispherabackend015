@@ -1,11 +1,7 @@
 from rest_framework import serializers
 from . import models
 
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Product
-        fields = '__all__'
-    
+
 
 class ProductImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -76,11 +72,13 @@ class BannerSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    productimage_set = ProductImageSerializer(many = True) 
     class Meta:
         model = models.Category
         fields = "__all__"    
 
 
+<<<<<<< HEAD
 
 
 
@@ -88,6 +86,16 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 
+=======
+class ProductSerializer(serializers.ModelSerializer):
+    productimage_set = ProductImageSerializer(many = True) 
+    productmemory_set = ProductMemorySerializer(many = True)
+    productprice_set = ProductPriceSerializer(many = True)
+    class Meta:
+        model = models.Product
+        fields = '__all__'
+    
+>>>>>>> 26a716554c9e34546c3537b45737091844eb7b31
         
 
     
