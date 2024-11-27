@@ -46,7 +46,7 @@ class Client(models.Model):
     def __str__(self):
         return self.full_name
 
-class Post(models.Model):
+class Post2(models.Model):
     image = models.ImageField(upload_to='posts/')
     title = models.CharField(max_length=255)
     description = models.TextField()
