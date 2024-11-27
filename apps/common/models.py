@@ -123,7 +123,7 @@ class ProductInfo(models.Model):
 
 class ProductInfoType(models.Model):
     key = models.CharField(max_length=250)
-    key = models.CharField(max_length=250)
+    value = models.CharField(max_length=250, null=True)
     product_info = models.ForeignKey(ProductInfo, on_delete=models.PROTECT)
 
 
