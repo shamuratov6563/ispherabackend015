@@ -78,15 +78,6 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"    
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
 class ProductSerializer(serializers.ModelSerializer):
     productimage_set = ProductImageSerializer(many = True) 
     productmemory_set = ProductMemorySerializer(many = True)
@@ -94,8 +85,38 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Product
         fields = '__all__'
-    
->>>>>>> 26a716554c9e34546c3537b45737091844eb7b31
-        
+            
 
+class OrderItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.OrderItem
+        fields = ('product_price', 'quantity')
     
+
+class OrderCreateSerializer(serializers.ModelSerializer):
+    orderitem_set = OrderItemSerializer(many=True, write_only=True)
+    
+
+    class Meta:
+        model = models.Order
+        exclude = ('total_price', )
+        extra_kwargs = {
+            'orderitem_set': {
+                "write_only": True
+            }
+        }
+
+    def create(self, validated_data):
+        orderitem_set = validated_data.pop('orderitem_set')
+        instance = models.Order.objects.create(**validated_data)
+        total_price = 0
+        for order_item in orderitem_set:
+            models.OrderItem.objects.create(**order_item, order=instance)
+            total_price += order_item['quantity'] * order_item['product_price'].price
+
+        instance.total_price = total_price
+        instance.save()
+        return instance
+    
+    # TODO validation check promocode is valid or not 

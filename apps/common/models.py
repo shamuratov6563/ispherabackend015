@@ -92,8 +92,8 @@ class Order(models.Model):
     comment = models.TextField()
     payment_type = models.CharField(max_length=200,choices=PaymentType.choices)
     delivery = models.CharField(max_length=200,choices=DeliveryType.choices)
-    total_price = models.PositiveIntegerField()
-    promocode = models.ForeignKey(PromoCode,on_delete=models.PROTECT)
+    total_price = models.PositiveIntegerField(default=0)
+    promocode = models.ForeignKey(PromoCode,on_delete=models.PROTECT, null=True)
     
 
 

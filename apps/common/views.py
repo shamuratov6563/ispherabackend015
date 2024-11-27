@@ -38,3 +38,9 @@ class CatalogAPIView(generics.ListAPIView):
     serializer_class = serializers.ProductSerializer
     queryset = models.Product.objects.all()
 
+
+class OrderCreateAPIView(generics.CreateAPIView):
+    serializer_class = serializers.OrderCreateSerializer
+
+    
+
