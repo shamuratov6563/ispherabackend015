@@ -29,3 +29,12 @@ class ProductImageAPIView(generics.ListCreateAPIView):
     queryset = models.ProductImage.objects.all()
     
     
+class ProductsCategoryAPIView(generics.ListAPIView):
+    serializer_class = serializers.CategorySerializer
+    queryset = models.Category.objects.all()
+
+
+class CatalogAPIView(generics.ListAPIView):
+    serializer_class = serializers.ProductSerializer
+    queryset = models.Product.objects.all()
+
