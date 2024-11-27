@@ -9,9 +9,9 @@ class BannerAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'full_name', 'service')
+    list_display = ('full_name', 'service')
     list_filter = ('service', 'category')
-    search_fields = ('title', 'full_name')
+    search_fields = ('full_name',)
 
 
 class ServiceAdmin(admin.ModelAdmin):
