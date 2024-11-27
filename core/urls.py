@@ -2,11 +2,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
+from apps.common import views
 
 from .schema import swagger_urlpatterns
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('product-create/',views.ProductCreateAPIView.as_view()),
+    path('product-detail/',views.ProductDetailAPIView.as_view()),
+    path('banner/',views.BannerAPIView.as_view()),
+    path('category/',views.CategoryAPIView.as_view()),
+    path('image/',views.ProductImageAPIView.as_view()),
+    
+    
 ]
 
 urlpatterns += swagger_urlpatterns
