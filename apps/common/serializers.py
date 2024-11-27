@@ -6,11 +6,43 @@ class ProductSerializer(serializers.ModelSerializer):
         model = models.Product
         fields = '__all__'
     
+
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ProductImage
+        exclude  = ("product",)
+        
+
+        
+        
+    
+class ProductPriceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.ProductPrice
+        exclude = ("product","memory",)   
+        
+        
+        
+        
+class ProductMemorySerializer(serializers.ModelSerializer):
+    productprice_set = ProductPriceSerializer(many= True)
+    class Meta:
+        model = models.ProductMemory
+        exclude = ("product",)    
+        
+        
+    
     
 class ProductDetailSerializer(serializers.ModelSerializer):
+    productimage_set = ProductImageSerializer(many = True) 
+    productmemory_set = ProductMemorySerializer(many = True)
+    productprice_set = ProductPriceSerializer(many = True)
+    
+    
     class Meta:
         model = models.Product
         fields = '__all__'
+        
         
 class BannerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,10 +56,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"    
 
 
-class ProductImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.ProductImage
-        fields = "__all__"
+
         
 
     
