@@ -120,3 +120,10 @@ class OrderCreateSerializer(serializers.ModelSerializer):
         return instance
     
     # TODO validation check promocode is valid or not 
+    
+    
+    
+class PromoCodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.PromoCode
+        fields = ['promo_code', 'is_active', 'discount', 'min_price']

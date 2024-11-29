@@ -16,7 +16,8 @@ urlpatterns = [
     path('product-category/',views.ProductsCategoryAPIView.as_view()),
     path('catalog/',views.CatalogAPIView.as_view()),
 
-    path('order-create/', views.OrderCreateAPIView.as_view())
+    path('order-create/', views.OrderCreateAPIView.as_view()),
+    path('apply-promo/', views.apply_promo_code, name='apply_promo_code'),
     
     
 ]
