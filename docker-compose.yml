@@ -24,7 +24,7 @@ services:
 
   db:
     image: postgres:13.4-buster
-    container_name: sqlite_container
+    container_name: sqlite_container1
     volumes:
       - sqlite_data:/app/db
     env_file: .env
