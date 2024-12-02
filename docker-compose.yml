@@ -7,7 +7,7 @@ volumes:
 
 services:
   web:
-    image: web_image
+    image: web_imageD
     container_name: ipsphere015Dildora
     depends_on:
       - db
