@@ -7,8 +7,8 @@ volumes:
 
 services:
   web:
-    image: web_image
-    container_name: web_container
+    image: web_imaged
+    container_name: ipsphere015Dildora
     depends_on:
       - db
     build: .
@@ -19,12 +19,12 @@ services:
     env_file: .env
     command: python manage.py runserver
     ports:
-      - 8001:8001
+      - 8003:8003
     restart: always
 
   db:
     image: postgres:13.4-buster
-    container_name: web_sqlite_container
+    container_name: sqlite_containerD
     volumes:
       - sqlite_data:/app/db
     env_file: .env
