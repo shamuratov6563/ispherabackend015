@@ -11,10 +11,10 @@ class Banner(models.Model):
         return self.title
 
 class Post(models.Model):
-    full_name = models.CharField(max_length=255)
-    phone_number = models.IntegerField()
-    service = models.ForeignKey('Service', on_delete=models.CASCADE)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=255, null=True)
+    phone_number = models.IntegerField(null=True)
+    service = models.ForeignKey('Service', on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.full_name
@@ -46,9 +46,9 @@ class Client(models.Model):
     def __str__(self):
         return self.full_name
 
-class Post(models.Model):
+class Post2(models.Model):
     image = models.ImageField(upload_to='posts/')
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True)
     description = models.TextField()
 
 
@@ -92,8 +92,8 @@ class Order(models.Model):
     comment = models.TextField()
     payment_type = models.CharField(max_length=200,choices=PaymentType.choices)
     delivery = models.CharField(max_length=200,choices=DeliveryType.choices)
-    total_price = models.PositiveIntegerField()
-    promocode = models.ForeignKey(PromoCode,on_delete=models.PROTECT)
+    total_price = models.PositiveIntegerField(default=0)
+    promocode = models.ForeignKey(PromoCode,on_delete=models.PROTECT, null=True)
     
 
 
@@ -123,7 +123,7 @@ class ProductInfo(models.Model):
 
 class ProductInfoType(models.Model):
     key = models.CharField(max_length=250)
-    key = models.CharField(max_length=250)
+    value = models.CharField(max_length=250, null=True)
     product_info = models.ForeignKey(ProductInfo, on_delete=models.PROTECT)
 
 
