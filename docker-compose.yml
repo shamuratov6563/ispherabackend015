@@ -1,9 +1,9 @@
 version: '3'
 
 volumes:
-  postgres_data: {}
-  static_data: {}
-  media_data: {}
+  sqlite_data: 
+  static_data: 
+  media_data: 
 
 services:
   web:
@@ -25,13 +25,13 @@ services:
     image: postgres:13.4-buster
     container_name: ISPHERA_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - sqlite_data:/var/lib/postgresql/data/
     env_file: .env
     environment:
       - DATABASE_URL: sqlite:///app/db
     restart: always
 
   redis:
-    container_name: ${PROJECT_NAME}_redis
+    container_name: isphera_redis
     image: redis:5.0
     restart: always
