@@ -39,6 +39,7 @@ class CatalogAPIView(generics.ListAPIView):
     queryset = models.Product.objects.all()
 
 
+<<<<<<< HEAD
 class OrderCreateAPIView(generics.CreateAPIView):
     serializer_class = serializers.OrderCreateSerializer
     
@@ -82,5 +83,26 @@ def apply_promo_code(request):
     })
 
 
+=======
+class OrderItemCreateView(generics.CreateAPIView):
+    queryset = models.OrderItem.objects.all()
+    serializer_class = serializers.OrderItemSerializer
+>>>>>>> af6b6d4c4d5d4dfb4ead45a39784ab8b5714f804
     
+
+
+class ProductListView(generics.ListAPIView):
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+
+
+
+class OrderCreateAPIView(generics.CreateAPIView):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.OrderCreateSerializer
+
+
+
+
+
 
