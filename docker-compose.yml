@@ -7,8 +7,8 @@ volumes:
 
 services:
   web:
-    image: web_imageJALOLIDDIN
-    container_name: ipsphere015backendJALOLIDDIN
+    image: web_image1
+    container_name: ipsphere015backend1
     depends_on:
       - db
     build: .
@@ -23,8 +23,8 @@ services:
     restart: always
 
   db:
-    image: postgres:13.4-busterJALOLIDDIN
-    container_name: ${PROJECT_NAME}_dbJALOLIDDIN
+    image: postgres:13.4-buster1
+    container_name: ${PROJECT_NAME}_db1
     volumes:
       - sqlite_data:/app/db
     env_file: .env
