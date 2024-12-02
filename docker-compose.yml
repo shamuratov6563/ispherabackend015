@@ -7,8 +7,8 @@ volumes:
 
 services:
   web:
-    image: web_imaged
-    container_name: ipsphere015Dildora
+    image: web_image
+    container_name: web_container
     depends_on:
       - db
     build: .
@@ -24,7 +24,7 @@ services:
 
   db:
     image: postgres:13.4-buster
-    container_name: sqlite_containerD
+    container_name: web_sqlite_container
     volumes:
       - sqlite_data:/app/db
     env_file: .env
